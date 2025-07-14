@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teg Atoe - IT Project Manager Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+       /* Basic Reset & Global Styles */
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       body {
+           font-family: 'Open Sans', sans-serif;
+           line-height: 1.6;
+           color: #333;
+           background-color: #f8f9fa; /* Light background */
+           display: flex;
+           flex-direction: column;
+           min-height: 100vh;
+       }
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+       /* Header */
+       header {
+           background: linear-gradient to right, #007bff, #0056b3); /* Blue gradient */
+           color: #fff;
+           padding: 1.5rem 0;
+           text-align: center;
+           box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+       }
+       header h1 {
+           font-family: 'Montserrat', sans-serif;
+           font-size: 3rem;
+           margin-bottom: 0.5rem;
+           text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+       }
+       header p {
+           font-size: 1.3rem;
+           opacity: 0.95;
+           font-weight: 300;
+       }
+       /* Navigation */
+       nav ul {
+           list-style: none;
+           padding: 0;
+           display: flex;
+           justify-content: center;
+           gap: 30px;
+           margin-top: 20px;
+       }
+       nav ul li a {
+           color: #fff;
+           text-decoration: none;
+           font-family: 'Montserrat', sans-serif;
+           font-weight: 600;
+           font-size: 1.1rem;
+           padding: 5px 10px;
+           border-radius: 5px;
+           transition: background-color 0.3s ease, transform 0.3s ease;
+       }
+       nav ul li a:hover {
+           background-color: rgba(255,255,255,0.2);
+           transform: translateY(-2px);
+       }
+       /* Sections General */
+       section {
+           padding: 60px 0;
+           background-color: #fff;
+           margin-bottom: 25px;
+           box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+           border-radius: 8px;
+       }
+       section:nth-of-type(even) {
+           background-color: #e9ecef; /* Slightly different background for alternating sections */
+       }
+       section h2 {
+           text-align: center;
+           font-family: 'Montserrat', sans-serif;
+           font-size: 2.8rem;
+           color: #007bff;
+           margin-bottom: 40px;
+           position: relative;
+           text-transform: uppercase;
+           letter-spacing: 1.5px;
+       }
+       section h2::after {
+           content: '';
+           position: absolute;
+           bottom: -15px;
+           left: 50%;
+           transform: translateX(-50%);
+           width: 80px;
+           height: 4px;
+           background-color: #007bff;
+           border-radius: 5px;
+       }
+       /* About Section */
+       #about p {
+           text-align: center;
+           max-width: 900px;
+           margin: 0 auto;
+           font-size: 1.2rem;
+           color: #555;
+           line-height: 1.8;
+       }
+       /* Skills Section */
+       #skills .skills-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+           gap: 30px;
+           padding: 0 20px;
+       }
+       #skills .skill-item {
+           background-color: #e0f7fa; /* Light blue */
+           padding: 30px;
+           border-radius: 10px;
+           text-align: center;
+           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+           transition: transform 0.3s ease, box-shadow 0.3s ease;
+           border: 1px solid #cceeff;
+       }
+       #skills .skill-item:hover {
+           transform: translateY(-7px);
+           box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+       }
+       #skills .skill-item h3 {
+           color: #0056b3; /* Darker blue */
+           margin-bottom: 15px;
+           font-size: 1.6rem;
+           font-family: 'Montserrat', sans-serif;
+       }
+       #skills .skill-item p {
+           color: #444;
+           font-size: 1rem;
+       }
+       /* Projects Section */
+       #projects .project-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+           gap: 40px;
+           padding: 0 20px;
+       }
+       #projects .project-card {
+           background-color: #fff;
+           border-radius: 10px;
+           overflow: hidden;
+           box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+           transition: transform 0.3s ease, box-shadow 0.3s ease;
+           display: flex;
+           flex-direction: column;
+       }
+       #projects .project-card:hover {
+           transform: translateY(-10px);
+           box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+       }
+       #projects .project-card img {
+           width: 100%;
+           height: 220px; /* Fixed height for project images */
+           object-fit: cover;
+           border-bottom: 1px solid #eee;
+       }
+       #projects .project-card-content {
+           padding: 25px;
+           flex-grow: 1;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+       }
+       #projects .project-card h3 {
+           color: #007bff;
+           font-family: 'Montserrat', sans-serif;
+           font-size: 1.8rem;
+           margin-bottom: 12px;
+       }
+       #projects .project-card p {
+           color: #666;
+           font-size: 1rem;
+           margin-bottom: 20px;
+           flex-grow: 1;
+       }
+       #projects .project-card .btn {
+           display: inline-block;
+           background-color: #007bff;
+           color: #fff;
+           padding: 12px 25px;
+           border-radius: 6px;
+           text-decoration: none;
+           font-weight: 600;
+           font-size: 1rem;
+           transition: background-color 0.3s ease, transform 0.3s ease;
+           align-self: flex-start; /* Aligns button to the left within flex container */
+       }
+       #projects .project-card .btn:hover {
+           background-color: #0056b3; /* Darker blue */
+           transform: translateY(-2px);
+       }
+       /* Contact Section */
+       #contact .contact-info {
+           text-align: center;
+           font-size: 1.2rem;
+           color: #555;
+       }
+       #contact .contact-info p {
+           margin-bottom: 15px;
+       }
+       #contact .contact-info a {
+           color: #007bff;
+           text-decoration: none;
+           font-weight: 600;
+           transition: color 0.3s ease, text-decoration 0.3s ease;
+       }
+       #contact .contact-info a:hover {
+           color: #0056b3;
+           text-decoration: underline;
+       }
+       /* Footer */
+       footer {
+           background: #343a40; /* Dark grey */
+           color: #fff;
+           text-align: center;
+           padding: 25px 0;
+           margin-top: auto;
+           box-shadow: 0 -4px 8px rgba(0,0,0,0.15);
+       }
+       /* Responsive Design */
+       @media (max-width: 992px) {
+           header h1 {
+               font-size: 2.5rem;
+           }
+           header p {
+               font-size: 1.1rem;
+           }
+           nav ul {
+               gap: 20px;
+           }
+           section h2 {
+               font-size: 2.2rem;
+           }
+           #skills .skills-grid,
+           #projects .project-grid {
+               grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+           }
+       }
+       @media (max-width: 768px) {
+           header h1 {
+               font-size: 2rem;
+           }
+           header p {
+               font-size: 1rem;
+           }
+           nav ul {
+               flex-direction: column;
+               gap: 10px;
+           }
+           nav ul li a {
+               font-size: 1rem;
+           }
+           section {
+               padding: 40px 0;
+           }
+           section h2 {
+               font-size: 1.8rem;
+               margin-bottom: 30px;
+           }
+           #skills .skills-grid,
+           #projects .project-grid {
+               grid-template-columns: 1fr; /* Single column layout on smaller screens */
+               padding: 0 15px;
+           }
+           #about p, #contact .contact-info {
+               font-size: 1rem;
+               padding: 0 15px;
+           }
+           #projects .project-card img {
+               height: 180px;
+           }
+           #projects .project-card-content {
+               padding: 20px;
+           }
+           #projects .project-card h3 {
+               font-size: 1.5rem;
+           }
+       }
+       @media (max-width: 480px) {
+           .container {
+               padding: 10px;
+           }
+           header {
+               padding: 1rem 0;
+           }
+           header h1 {
+               font-size: 1.5rem;
+           }
+           header p {
+               font-size: 0.9rem;
+           }
+           section h2 {
+               font-size: 1.5rem;
+           }
+       }
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>Teg Atoe</h1>
+<p>IT Project Manager | Transitioning to Public Sector</p>
+<nav>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<section id="about" class="container">
+<h2>About Me</h2>
+<p>
+               As a highly accomplished IT Project Manager with a solid background in the oil and gas sector, I bring a robust skill set in **project planning and execution**, **risk mitigation**, and **stakeholder engagement** to the table. I'm adept at leading complex IT initiatives from inception to successful delivery, always with a keen eye on **process improvement** and **change management**. My technical literacy allows me to bridge the gap between technical teams and business objectives effectively. I am now seeking to leverage my proven leadership and delivery capabilities within the public sector, eager to contribute to impactful initiatives that serve the community.
+</p>
+</section>
+<section id="skills" class="container">
+<h2>My Core Competencies</h2>
+<div class="skills-grid">
+<div class="skill-item">
+<h3>Project Planning & Scheduling</h3>
+<p>WBS, Gantt Charts, Critical Path, Resource Allocation, Agile/Scrum, Waterfall Methodologies, Jira, MS Project</p>
+</div>
+<div class="skill-item">
+<h3>Risk Management & Issue Resolution</h3>
+<p>Risk Identification, Mitigation Strategies, Contingency Planning, Issue Tracking & Escalation, Problem Solving</p>
+</div>
+<div class="skill-item">
+<h3>Technical Literacy & Tool Familiarity</h3>
+<p>Infrastructure Projects, Software Development Life Cycle (SDLC), Cloud Technologies (AWS/Azure), CRM/ERP Systems, Collaboration Tools</p>
+</div>
+<div class="skill-item">
+<h3>Stakeholder Communication & Management</h3>
+<p>Cross-functional Team Leadership, Executive Reporting, Vendor Management, Conflict Resolution, Expectation Management</p>
+</div>
+<div class="skill-item">
+<h3>Documentation & Reporting</h3>
+<p>Project Charters, BRDs, SRS, Progress Reports, Status Updates, Post-Mortem Analysis, Confluence, SharePoint</p>
+</div>
+<div class="skill-item">
+<h3>Process Improvement & Change Management</h3>
+<p>Lean, Six Sigma Principles, Workflow Optimization, User Adoption Strategies, Training & Development</p>
+</div>
+<div class="skill-item">
+<h3>Budget & Resource Management</h3>
+<p>Cost Control, Forecasting, Procurement, Vendor Negotiation, Optimizing Resource Utilization</p>
+</div>
+<div class="skill-item">
+<h3>Compliance & Governance</h3>
+<p>Adherence to Regulatory Standards, IT Governance Frameworks (ITIL), Data Security Protocols</p>
+</div>
+</div>
+</section>
+<section id="projects" class="container">
+<h2>Featured Projects</h2>
+<div class="project-grid">
+<div class="project-card">
+<img src="https://via.placeholder.com/400x220?text=Digital+Transformation+Project" alt="Digital Transformation Project Image">
+<div class="project-card-content">
+<h3>ERP System Upgrade & Integration</h3>
+<p>Managed a $5M ERP system upgrade for a major oil and gas firm, coordinating a 30-person cross-functional team. Achieved a 15% improvement in data processing efficiency and ensured zero downtime during cutover, leveraging strong **risk management** and **stakeholder communication**.</p>
+<a href="#" class="btn">Learn More</a>
+</div>
+</div>
+<div class="project-card">
+<img src="https://via.placeholder.com/400x220?text=Data+Security+Initiative" alt="Data Security Initiative Image">
+<div class="project-card-content">
+<h3>Enhanced Data Security & Compliance Framework</h3>
+<p>Led an initiative to implement new data encryption and access control protocols across critical IT infrastructure, improving compliance posture by 25%. Involved extensive **process improvement** and **change management** to ensure user adoption and adherence to new security policies.</p>
+<a href="#" class="btn">Learn More</a>
+</div>
+</div>
+<div class="project-card">
+<img src="https://via.placeholder.com/400x220?text=Cloud+Migration+Project" alt="Cloud Migration Project Image">
+<div class="project-card-content">
+<h3>Cloud Infrastructure Migration</h3>
+<p>Directed the migration of on-premise data centers to a hybrid cloud environment, completing the project 10% under budget. Demonstrated strong **technical literacy** in cloud platforms and meticulous **project planning and scheduling** to minimize service interruptions.</p>
+<a href="#" class="btn">Learn More</a>
+</div>
+</div>
+<div class="project-card">
+<img src="https://via.placeholder.com/400x220?text=Future+Public+Sector+Project" alt="Future Public Sector Project Image">
+<div class="project-card-content">
+<h3>Proposed: Citizen Service Digitalization Initiative</h3>
+<p>Applying my expertise in **process improvement** and **technical literacy**, I envision leading projects to digitalize public services, streamlining citizen interactions and enhancing operational efficiency through modern IT solutions, similar to my past successes in large-scale system overhauls.</p>
+<a href="#" class="btn">Future Vision</a>
+</div>
+</div>
+</div>
+</section>
+<section id="contact" class="container">
+<h2>Connect With Me</h2>
+<div class="contact-info">
+<p>I'm excited about the opportunity to contribute my project management expertise to the public sector. Let's connect!</p>
+<p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<p>&copy; 2025 Teg Atoe. All rights reserved. Built with passion.</p>
+</div>
+</footer>
+</body>
+</html>
